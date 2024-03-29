@@ -35,5 +35,7 @@ public class App {
 
         System.out.println(teacher.getStudentsFromFile("C:\\Users\\cagri\\IdeaProjects\\Java_HS1_StudentScoreAssessment\\src\\main\\resources\\Selcuk.txt"));
 
+
+
     }
 }

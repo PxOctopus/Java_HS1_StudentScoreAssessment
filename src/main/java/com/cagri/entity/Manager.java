@@ -29,7 +29,8 @@ public class Manager {
         return st;
     }
 
-
+    // The method here reads student information and grades using the teacher's name and BufferedReader as parameters;
+    // It also includes extracted method created below which creates a student class with the obtained parameters and adds it to the student list:
     public List<Student> readFromFile(String teacherName, BufferedReader reader) {
         try {
             String line = "";
@@ -43,29 +44,26 @@ public class Manager {
         return Teacher.studentList;
     }
 
-
     public String[] makeAstudentAndAddtoList(String line) {
         String[] lineParts = line.split(",");
         double studentAv = scoresAverage(Arrays.stream(lineParts).toList().subList(1, 4));
         String studentName = lineParts[0];
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
         LocalDate dateOfBirth = LocalDate.parse(lineParts[4], formatter);
         Student student = new Student(studentName, studentAv, dateOfBirth);
         Teacher.studentList.add(student);
         return lineParts;
     }
 
-
+    //Calculates the average of the grades given.
     public double scoresAverage(List<String> notes) {
         return notes.stream().mapToDouble(Double::parseDouble).average().getAsDouble();
     }
 
-
+    //It serializes the student list and saves it in a file.
+    // This method will actually create a file such as teacher's name.txt and write the incoming student list into that file.
     public void createTeacherFile(List<Student> studentList, String teacherName) {
         File teacherFile = new File(file + teacherName + ".txt");
-
         try {
             FileOutputStream fos = new FileOutputStream(teacherFile);
             ObjectOutputStream oos = new ObjectOutputStream(fos);

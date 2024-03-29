@@ -12,19 +12,21 @@ public class Teacher {
     public static List<Student> studentList = new ArrayList<>();
     Manager manager = new Manager();
 
-    public List<Student> getStudentsFromFile(String path){
-          return manager.getStudents(path);
+    //It reads the student list from the file by calling the getStudents() method of the Manager class:
+    public List<Student> getStudentsFromFile(String path) {
+        return manager.getStudents(path);
     }
 
-
+    //It saves the student list to the file by calling createTeacherFile() method of the Manager class:
     public void createTeacherfromManager() {
-    manager.createTeacherFile(studentList, name);
+        manager.createTeacherFile(studentList, name);
     }
 
-
+    //Reads student grades using BufferedReader and creates a students list:
     public void readScoresAndMakeList() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\cagri\\IdeaProjects\\Java_HS1_StudentScoreAssessment\\src\\main\\resources\\ogrenciler.txt"));
+            BufferedReader reader
+                    = new BufferedReader(new FileReader("C:\\Users\\cagri\\IdeaProjects\\Java_HS1_StudentScoreAssessment\\src\\main\\resources\\ogrenciler.txt"));
             String line = "";
             while ((line = reader.readLine()) != null) {
                 manager.makeAstudentAndAddtoList(line);

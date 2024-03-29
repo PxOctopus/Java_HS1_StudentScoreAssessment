@@ -9,9 +9,9 @@ public class Student implements Serializable {
     private EState state;
     private LocalDate dateOfBirth;
 
-
-    public EState setStatus(){
-      return scoreAverage>=60 ? EState.PASSED : EState.FAILED;
+    //This method determines the student's status based on their grade point average and updates the status feature:
+    public EState setStatus() {
+        return scoreAverage >= 60 ? EState.PASSED : EState.FAILED;
     }
 
     public Student(String name, double scoreAverage, LocalDate dateOfBirth) {
